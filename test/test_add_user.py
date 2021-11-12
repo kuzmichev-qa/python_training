@@ -1,14 +1,5 @@
-import pytest
-
-from fixture.application import Application
+import time
 from model.new_user import NewUserPage
-
-
-@pytest.fixture
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy)
-    return fixture
 
 
 def test_add_user(app):
@@ -27,4 +18,4 @@ def test_add_user(app):
                                                 bday_day="15", bday_month="June", bday_year="2000",
                                                 aday_day="15", aday_month="June", aday_year="2000", ))
     app.session.logout()
-
+    time.sleep(3)

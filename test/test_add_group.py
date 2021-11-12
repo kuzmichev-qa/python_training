@@ -1,23 +1,17 @@
-import pytest
-
-from fixture.application import Application
+import time
 from model.group import Group
 
-
-@pytest.fixture
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy)
-    return fixture
 
 
 def test_add_group(app):
     app.session.login(username="admin", password="secret")
     app.group.create(Group(name="group_name_1", header="Group_header_1", footer="Group_footer_1"))
     app.session.logout()
+    time.sleep(3)
 
 
 def test_add_empty_group(app):
     app.session.login(username="admin", password="secret")
     app.group.create(Group(name="", header="", footer=""))
     app.session.logout()
+    time.sleep(3)
