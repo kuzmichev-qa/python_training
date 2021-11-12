@@ -27,7 +27,7 @@ class UntitledTestCase(unittest.TestCase):
                                                 telephone_work="telephone_work", fax="fax",
                                                 email_1="mail_1", email_2="mail_2", email_3="mail_3",
                                                 homepage="homepage",
-                                                secondary_addres="secondary_addres",
+                                                secondary_address="secondary_address",
                                                 secondary_home="secondary_home",
                                                 secondary_notes="secondary_notes",
                                                 bday_day="15", bday_month="June", bday_year="2000",
@@ -73,7 +73,7 @@ class UntitledTestCase(unittest.TestCase):
 
         wd.find_element_by_xpath("//div[@id='content']/form/label[22]/b").click()
         wd.find_element_by_name("address2").click()
-        wd.find_element_by_name("address2").send_keys(NewUserPage.secondary_addres)
+        wd.find_element_by_name("address2").send_keys(NewUserPage.secondary_address)
         wd.find_element_by_name("phone2").clear()
         wd.find_element_by_name("phone2").send_keys(NewUserPage.secondary_home)
         wd.find_element_by_name("notes").clear()

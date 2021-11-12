@@ -3,7 +3,7 @@ class NewUserPage:
 
 
     def __init__(self, tittle, company, address, telephone_home, telephone_mobile, telephone_work, fax
-                 , email_1, email_2, email_3,homepage, secondary_addres, secondary_home, secondary_notes,
+                 , email_1, email_2, email_3,homepage, secondary_address, secondary_home, secondary_notes,
                  bday_day, bday_month, bday_year, aday_day, aday_month, aday_year,
                  first_name, middle_name, last_name, nickname):
         self.first_name = first_name
@@ -21,7 +21,7 @@ class NewUserPage:
         self.email_2 = email_2
         self.email_3 = email_3
         self.homepage = homepage
-        self.secondary_addres = secondary_addres
+        self.secondary_address = secondary_address
         self.secondary_home = secondary_home
         self.secondary_notes = secondary_notes
         self.bday_day = bday_day
