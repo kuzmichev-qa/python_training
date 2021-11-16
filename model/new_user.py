@@ -1,4 +1,4 @@
-class NewUserPage:
+class Contact:
 
     def __init__(self, tittle, company, address, telephone_home, telephone_mobile, telephone_work, fax
                  , email_1, email_2, email_3, homepage, secondary_address, secondary_home, secondary_notes,

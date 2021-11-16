@@ -2,7 +2,6 @@ import time
 from model.group import Group
 
 
-
 def test_add_group(app):
     app.session.login(username="admin", password="secret")
     app.group.create(Group(name="group_name_1", header="Group_header_1", footer="Group_footer_1"))
