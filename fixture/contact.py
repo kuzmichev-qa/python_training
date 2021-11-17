@@ -1,15 +1,13 @@
+import time
+
 from selenium.webdriver.support.select import Select
 
 
-class NewUserHelper:
+class ContactHelper:
     def __init__(self, app):
         self.app = app
 
-    def submit_user_creation(self):
-        wd = self.app.wd
-        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
-
-    def fill_contact(self, contact):
+    def fill(self, contact):
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
         wd.find_element_by_name("firstname").send_keys(contact.first_name)
@@ -47,11 +45,15 @@ class NewUserHelper:
         wd.find_element_by_name("phone2").send_keys(contact.secondary_home)
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.secondary_notes)
+        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
     def return_to_home_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("home").click()
 
-    # def init_user_creation(self):
-    #     wd = self.app.wd
-    #     wd.find_element_by_link_text("add new").click()
+    def delete_first_user(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath("//*[@id='content']/form[2]/div[2]/input").click()
+        wd.switch_to.alert.accept()
+        self.return_to_home_page()
