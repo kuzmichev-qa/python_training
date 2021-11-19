@@ -2,7 +2,7 @@ import time
 from model.new_user import Contact
 
 
-def test_add_user(app):
+def test_add_contact(app):
     app.session.login(username="admin", password="secret")
     app.contact.fill(Contact(first_name="first_name", middle_name="middle_name",
                              last_name="last_name", nickname="nickname",
@@ -20,10 +20,28 @@ def test_add_user(app):
     app.session.logout()
 
 
-def test_add_empty_user(app):
+def test_add_empty_contact(app):
     app.session.login(username="admin", password="secret")
     app.contact.fill(Contact(first_name="", middle_name="",
                              last_name="", nickname="",
+                             tittle="", company="", address="",
+                             telephone_home="",
+                             telephone_mobile="",
+                             telephone_work="", fax="",
+                             email_1="", email_2="", email_3="",
+                             homepage="",
+                             secondary_address="",
+                             secondary_home="",
+                             secondary_notes="",
+                             bday_day="-", bday_month="-", bday_year="",
+                             aday_day="-", aday_month="-", aday_year=""))
+    app.session.logout()
+
+
+def test_modification_contact(app):
+    app.session.login(username="admin", password="secret")
+    app.contact.edit(Contact(first_name="edited_name", middle_name="edited_middlename",
+                             last_name="edited_lastname", nickname="edited_nickname",
                              tittle="", company="", address="",
                              telephone_home="",
                              telephone_mobile="",
