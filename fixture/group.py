@@ -1,3 +1,6 @@
+import time
+
+
 class GroupHelper:
     def __init__(self, app):
         self.app = app
@@ -13,6 +16,7 @@ class GroupHelper:
         self.fill_group_form(group)
         wd.find_element_by_name("submit").click()
         self.return_to_groups_page()
+        time.sleep(5)
 
     def fill_group_form(self, group):
         wd = self.app.wd
@@ -50,3 +54,9 @@ class GroupHelper:
         self.fill_group_form(new_group_data)
         wd.find_element_by_xpath("//input[@value='Update' ]").click()
         self.return_to_groups_page()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        return len(wd.find_elements_by_name("selected[]"))
+
