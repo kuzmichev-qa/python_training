@@ -3,7 +3,6 @@ from model.new_user import Contact
 
 
 def test_add_contact(app):
-    app.session.login(username="admin", password="secret")
     app.contact.fill(Contact(first_name="first_name", middle_name="middle_name",
                              last_name="last_name", nickname="nickname",
                              tittle="tittle", company="company", address="address",
@@ -17,11 +16,9 @@ def test_add_contact(app):
                              secondary_notes="secondary_notes",
                              bday_day="15", bday_month="June", bday_year="2000",
                              aday_day="15", aday_month="June", aday_year="2000"))
-    app.session.logout()
 
 
 def test_add_empty_contact(app):
-    app.session.login(username="admin", password="secret")
     app.contact.fill(Contact(first_name="", middle_name="",
                              last_name="", nickname="",
                              tittle="", company="", address="",
@@ -35,11 +32,9 @@ def test_add_empty_contact(app):
                              secondary_notes="",
                              bday_day="-", bday_month="-", bday_year="",
                              aday_day="-", aday_month="-", aday_year=""))
-    app.session.logout()
 
 
 def test_modification_contact(app):
-    app.session.login(username="admin", password="secret")
     app.contact.edit(Contact(first_name="edited_name", middle_name="edited_middlename",
                              last_name="edited_lastname", nickname="edited_nickname",
                              tittle="", company="", address="",
@@ -53,4 +48,3 @@ def test_modification_contact(app):
                              secondary_notes="",
                              bday_day="-", bday_month="-", bday_year="",
                              aday_day="-", aday_month="-", aday_year=""))
-    app.session.logout()

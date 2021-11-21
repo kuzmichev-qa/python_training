@@ -9,6 +9,7 @@ class ContactHelper:
 
     def fill(self, contact):
         wd = self.app.wd
+        self.open_contact_page()
         wd.find_element_by_link_text("add new").click()
         wd.find_element_by_name("firstname").send_keys(contact.first_name)
         wd.find_element_by_name("middlename").send_keys(contact.middle_name)
@@ -47,27 +48,26 @@ class ContactHelper:
         wd.find_element_by_name("notes").send_keys(contact.secondary_notes)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
-    def return_to_home_page(self):
-        wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
-
     def delete_first_contact(self):
         wd = self.app.wd
+        self.open_contact_page()
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//*[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to.alert.accept()
-        self.return_to_home_page()
+        self.open_contact_page()
 
     def delete_all_contacts(self):
         wd = self.app.wd
+        self.open_contact_page()
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@onclick= 'MassSelection()']").click()
         wd.find_element_by_xpath("//*[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to.alert.accept()
-        self.return_to_home_page()
+        self.open_contact_page()
 
     def edit(self, contact):
         wd = self.app.wd
+        self.open_contact_page()
         wd.find_element_by_xpath("//*[@title= 'Edit']").click()
         wd.find_element_by_name("firstname").send_keys(contact.first_name)
         wd.find_element_by_name("middlename").send_keys(contact.middle_name)
@@ -105,3 +105,7 @@ class ContactHelper:
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.secondary_notes)
         wd.find_element_by_xpath("//input[@name='update' ]").click()
+
+    def open_contact_page(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
