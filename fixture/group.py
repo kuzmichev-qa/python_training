@@ -16,7 +16,6 @@ class GroupHelper:
         self.fill_group_form(group)
         wd.find_element_by_name("submit").click()
         self.return_to_groups_page()
-        time.sleep(5)
 
     def fill_group_form(self, group):
         wd = self.app.wd
