@@ -1,6 +1,9 @@
 import time
 
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
+
+from model.new_user import Contact
 
 
 class ContactHelper:
@@ -102,3 +105,13 @@ class ContactHelper:
     def save_new_contact(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        contacts = []
+        for element in wd.find_elements_by_name("entry"):
+            text = element.text
+            id = element.find_element(By.NAME, "selected[]").get_attribute("value")
+            contacts.append(Contact(first_name=text, id=id))
+        return contacts
